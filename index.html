@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Louis Photography · Documentary Wedding Photographer in Gauteng</title>
-  <meta name="description" content="Louis Photography: documentary wedding photography in Johannesburg, Pretoria and across Gauteng. Unscripted, film-inspired, and told in the order your day happened.">
-  <meta name="theme-color" content="#f3ede3">
+  <meta name="description" content="Louis Photography: documentary wedding photography in Johannesburg, Pretoria and across Gauteng. Unscripted, colourful, and told in the order your day happened.">
+  <meta name="theme-color" content="#f1efea">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
@@ -30,19 +30,44 @@
 
   <main id="main">
 
-    <!-- HERO: the frame "develops" on load, safelight red to full print -->
-    <section class="hero is-dark" aria-labelledby="hero-title">
-      <figure class="frame frame--hero tone-dusk" data-develop>
-        <!-- Replace with: <img src="images/hero.jpg" alt="Describe the photo"> -->
-        <figcaption class="frame__note">Placeholder · your strongest frame. Wide, candid, a little dark.</figcaption>
-      </figure>
-      <div class="hero__copy">
-        <p class="eyebrow">Documentary wedding photography · Gauteng &amp; wherever you're going</p>
-        <h1 class="hero__title" id="hero-title">Most of your wedding happens <em>while you're looking the other way.</em></h1>
-        <p class="hero__lede">I'm there for that part. No lining up, no “one more time for the camera.” Just the day as it actually went, in the order it happened.</p>
-        <a class="button" href="#inquire">Check your date</a>
+    <!--
+      PHOTOS: every photo spot is a <figure class="frame"> holding a coloured
+      placeholder <div class="ph tone-...">. To use a real photo, replace the
+      <div class="ph ..."></div> with <img src="images/your-photo.jpg" alt="What's in the photo">.
+      data-speed makes a photo drift slower or faster than the page as you scroll.
+    -->
+
+    <!-- OPENING: the intro stays put while a wall of photos drifts past underneath -->
+    <section class="opening" aria-labelledby="opening-title">
+      <div class="opening__copy">
+        <div class="opening__panel">
+          <p class="eyebrow">Documentary wedding photography · Gauteng</p>
+          <h1 class="opening__title" id="opening-title">Most of your wedding happens <em>while you're looking the other way.</em></h1>
+          <p class="opening__lede">I'm there for that part. No lining up, no “one more time for the camera.” Just the day as it actually went, in the order it happened.</p>
+          <a class="button button--solid" href="#inquire">Check your date</a>
+        </div>
       </div>
-      <p class="hero__scroll" aria-hidden="true">The day, in order ↓</p>
+      <div class="opening__wall" aria-hidden="true">
+        <div class="wall-col" data-speed="0.12">
+          <figure class="frame ratio-1x1"><div class="ph tone-garden"></div></figure>
+          <figure class="frame ratio-1x1"><div class="ph tone-golden"></div></figure>
+          <figure class="frame ratio-1x1"><div class="ph tone-bw"></div></figure>
+          <figure class="frame ratio-1x1"><div class="ph tone-sky"></div></figure>
+        </div>
+        <div class="wall-col" data-speed="-0.1">
+          <figure class="frame ratio-1x1"><div class="ph tone-velvet"></div></figure>
+          <figure class="frame ratio-1x1"><div class="ph tone-jacaranda"></div></figure>
+          <figure class="frame ratio-1x1"><div class="ph tone-garden"></div></figure>
+          <figure class="frame ratio-1x1"><div class="ph tone-candle"></div></figure>
+        </div>
+        <div class="wall-col" data-speed="0.18">
+          <figure class="frame ratio-1x1"><div class="ph tone-blush"></div></figure>
+          <figure class="frame ratio-1x1"><div class="ph tone-bw"></div></figure>
+          <figure class="frame ratio-1x1"><div class="ph tone-golden"></div></figure>
+          <figure class="frame ratio-1x1"><div class="ph tone-velvet"></div></figure>
+        </div>
+      </div>
+      <p class="opening__note">Placeholder wall · 12 favourite frames, a mix of colour and black &amp; white</p>
     </section>
 
     <!-- INTRO -->
@@ -56,106 +81,119 @@
       </p>
     </section>
 
-    <!-- THE DAY: a real chronology, so timestamps carry meaning -->
+    <!-- THE DAY: a real chronology, so the times carry meaning -->
     <section class="day" id="the-day" aria-labelledby="day-title">
       <div class="day-clock" aria-hidden="true">
         <span class="day-clock__time">1:40 pm</span>
         <span class="day-clock__title">Getting ready</span>
         <span class="day-clock__bar"><span class="day-clock__fill"></span></span>
       </div>
-      <header class="section-head">
+
+      <header class="day__head" data-reveal>
         <p class="eyebrow">The day</p>
         <h2 class="section-title" id="day-title">One wedding, told the way it unfolded.</h2>
       </header>
 
       <ol class="chapters">
-        <li class="chapter" data-reveal>
-          <div class="chapter__time"><time>1:40</time><span>pm</span></div>
-          <div class="chapter__body">
+        <li class="chapter">
+          <header class="chapter__head" data-reveal>
+            <p class="chapter__time"><time>1:40</time> pm</p>
             <h3 class="chapter__title">Getting ready</h3>
-            <p>The room is too small and full of people talking at once. Someone's steaming a dress. Someone's crying already. I stay out of the way and keep watching.</p>
-            <div class="frames frames--pair">
-              <figure class="frame ratio-4x5 tone-window"><figcaption class="frame__note">Placeholder · buttons being done up, window light</figcaption></figure>
-              <figure class="frame ratio-4x5 tone-warm"><figcaption class="frame__note">Placeholder · the letter, read alone</figcaption></figure>
-            </div>
+            <p class="chapter__text">The room is too small and full of people talking at once. Someone's steaming a dress. Someone's crying already. I stay out of the way and keep watching.</p>
+          </header>
+          <div class="spread spread--pair">
+            <figure class="frame ratio-4x5" data-speed="0.04"><div class="ph tone-blush"></div><figcaption class="frame__note">Placeholder · the dress on its hanger, window light</figcaption></figure>
+            <figure class="frame ratio-3x4" data-speed="-0.08"><div class="ph tone-bw"></div><figcaption class="frame__note">Placeholder · buttons being done up, black &amp; white</figcaption></figure>
           </div>
         </li>
 
-        <li class="chapter" data-reveal>
-          <div class="chapter__time"><time>4:02</time><span>pm</span></div>
-          <div class="chapter__body">
+        <li class="chapter">
+          <header class="chapter__head" data-reveal>
+            <p class="chapter__time"><time>2:30</time> pm</p>
+            <h3 class="chapter__title">The small things</h3>
+            <p class="chapter__text">Everything you chose on purpose gets photographed on purpose: the rings, the letters, your gran's earrings, the shoes you'll never wear again.</p>
+          </header>
+          <div class="spread spread--trio">
+            <figure class="frame ratio-4x5" data-speed="0.06"><div class="ph tone-velvet"></div><figcaption class="frame__note">Placeholder · rings on velvet</figcaption></figure>
+            <figure class="frame ratio-4x5" data-speed="-0.04"><div class="ph tone-golden"></div><figcaption class="frame__note">Placeholder · the perfume, the letter</figcaption></figure>
+            <figure class="frame ratio-4x5" data-speed="0.1"><div class="ph tone-velvet"></div><figcaption class="frame__note">Placeholder · the shoes</figcaption></figure>
+          </div>
+        </li>
+
+        <li class="chapter">
+          <header class="chapter__head" data-reveal>
+            <p class="chapter__time"><time>4:02</time> pm</p>
             <h3 class="chapter__title">The aisle</h3>
-            <p>Forty seconds, give or take. Nobody gets to do it again. I'll be where I need to be so you don't have to think about me at all.</p>
-            <div class="frames frames--wide">
-              <figure class="frame ratio-3x2 tone-daylight"><figcaption class="frame__note">Placeholder · the walk, shot from the side, faces in the pews turning</figcaption></figure>
-            </div>
+            <p class="chapter__text">Forty seconds, give or take. Nobody gets to do it again. I'll be where I need to be so you don't have to think about me at all.</p>
+          </header>
+          <div class="spread spread--wide">
+            <figure class="frame ratio-21x9" data-speed="0.05"><div class="ph tone-garden"></div><figcaption class="frame__note">Placeholder · the walk, wide, guests turning to look</figcaption></figure>
           </div>
         </li>
 
-        <li class="chapter" data-reveal>
-          <div class="chapter__time"><time>4:31</time><span>pm</span></div>
-          <div class="chapter__body">
+        <li class="chapter">
+          <header class="chapter__head" data-reveal>
+            <p class="chapter__time"><time>4:31</time> pm</p>
             <h3 class="chapter__title">Right after</h3>
-            <p>The recessional ends and there's a few seconds where it's just the two of you, a bit stunned. I've learned to be ready for it.</p>
-            <div class="frames frames--offset">
-              <figure class="frame ratio-2x3 tone-shade"><figcaption class="frame__note">Placeholder · the exhale, foreheads together</figcaption></figure>
-              <figure class="frame ratio-1x1 tone-daylight"><figcaption class="frame__note">Placeholder · confetti or petals, in motion</figcaption></figure>
-            </div>
+            <p class="chapter__text">The recessional ends and there are a few seconds where it's just the two of you, a bit stunned. I've learned to be ready for it.</p>
+          </header>
+          <div class="spread spread--pair spread--flip">
+            <figure class="frame ratio-3x4" data-speed="-0.06"><div class="ph tone-sky"></div><figcaption class="frame__note">Placeholder · the exhale, foreheads together</figcaption></figure>
+            <figure class="frame ratio-4x5" data-speed="0.08"><div class="ph tone-blush"></div><figcaption class="frame__note">Placeholder · petals in the air</figcaption></figure>
           </div>
         </li>
 
-        <li class="chapter" data-reveal>
-          <div class="chapter__time"><time>5:15</time><span>pm</span></div>
-          <div class="chapter__body">
+        <li class="chapter">
+          <header class="chapter__head" data-reveal>
+            <p class="chapter__time"><time>5:15</time> pm</p>
             <h3 class="chapter__title">Portraits, briefly</h3>
-            <p>This is the one part I direct. It still shouldn't feel like posing: we walk, we talk, I give you something to do. Twenty minutes and you're back with your guests.</p>
-            <div class="frames frames--trio">
-              <figure class="frame ratio-4x5 tone-golden"><figcaption class="frame__note">Placeholder · walking, mid-laugh</figcaption></figure>
-              <figure class="frame ratio-4x5 tone-dusk"><figcaption class="frame__note">Placeholder · close portrait, wind in the veil</figcaption></figure>
-              <figure class="frame ratio-4x5 tone-golden"><figcaption class="frame__note">Placeholder · small in a big landscape</figcaption></figure>
-            </div>
+            <p class="chapter__text">This is the one part I direct, and it still shouldn't feel like posing. We walk, we talk, I give you something to do. Twenty minutes, then you're back with your guests. In October, we go find the jacarandas.</p>
+          </header>
+          <div class="spread spread--feature">
+            <figure class="frame ratio-4x5" data-speed="0.03"><div class="ph tone-jacaranda"></div><figcaption class="frame__note">Placeholder · under the jacarandas, mid-laugh</figcaption></figure>
+            <figure class="frame ratio-1x1" data-speed="-0.1"><div class="ph tone-golden"></div><figcaption class="frame__note">Placeholder · small in a big Highveld landscape</figcaption></figure>
           </div>
         </li>
 
-        <li class="chapter" data-reveal>
-          <div class="chapter__time"><time>7:48</time><span>pm</span></div>
-          <div class="chapter__body">
+        <li class="chapter">
+          <header class="chapter__head" data-reveal>
+            <p class="chapter__time"><time>7:48</time> pm</p>
             <h3 class="chapter__title">The toasts</h3>
-            <p>Somebody always cries, and it's never who you'd guess. I spend the speeches watching the room, not the microphone.</p>
-            <div class="frames frames--pair">
-              <figure class="frame ratio-3x2 tone-candle"><figcaption class="frame__note">Placeholder · the speaker, glass raised</figcaption></figure>
-              <figure class="frame ratio-3x2 tone-candle"><figcaption class="frame__note">Placeholder · the reaction, across the table</figcaption></figure>
-            </div>
+            <p class="chapter__text">Somebody always cries, and it's never who you'd guess. I spend the speeches watching the room, not the microphone.</p>
+          </header>
+          <div class="spread spread--pair">
+            <figure class="frame ratio-3x2" data-speed="0.05"><div class="ph tone-candle"></div><figcaption class="frame__note">Placeholder · the speaker, glass raised</figcaption></figure>
+            <figure class="frame ratio-3x4" data-speed="-0.07"><div class="ph tone-bw"></div><figcaption class="frame__note">Placeholder · the reaction across the table</figcaption></figure>
           </div>
         </li>
 
-        <li class="chapter" data-reveal>
-          <div class="chapter__time"><time>10:26</time><span>pm</span></div>
-          <div class="chapter__body">
+        <li class="chapter">
+          <header class="chapter__head" data-reveal>
+            <p class="chapter__time"><time>10:26</time> pm</p>
             <h3 class="chapter__title">The party</h3>
-            <p>Nobody's thinking about photos anymore, which is exactly when they get good. The light is bad and the room is loud. That's fine. I bring flash and I'm not afraid of the dark.</p>
-            <div class="frames frames--wide">
-              <figure class="frame ratio-16x9 tone-flash"><figcaption class="frame__note">Placeholder · dance floor, hard flash, arms up</figcaption></figure>
-            </div>
+            <p class="chapter__text">Nobody's thinking about photos anymore, which is exactly when they get good. The light is bad and the room is loud. That's fine. I bring flash and I'm not afraid of the dark.</p>
+          </header>
+          <div class="spread spread--wide">
+            <figure class="frame ratio-21x9" data-speed="0.05"><div class="ph tone-flash"></div><figcaption class="frame__note">Placeholder · dance floor, hard flash, arms up</figcaption></figure>
           </div>
         </li>
 
-        <li class="chapter" data-reveal>
-          <div class="chapter__time"><time>11:52</time><span>pm</span></div>
-          <div class="chapter__body">
+        <li class="chapter">
+          <header class="chapter__head" data-reveal>
+            <p class="chapter__time"><time>11:52</time> pm</p>
             <h3 class="chapter__title">Last song</h3>
-            <p>The room empties out. Shoes off, jackets on the wrong people. What's left is how it felt, and that's what I'm after.</p>
-            <div class="frames frames--single">
-              <figure class="frame ratio-4x5 tone-night"><figcaption class="frame__note">Placeholder · the two of you leaving, backlit</figcaption></figure>
-            </div>
+            <p class="chapter__text">The room empties out. Shoes off, jackets on the wrong people. What's left is how it felt, and that's what I'm after.</p>
+          </header>
+          <div class="spread spread--single">
+            <figure class="frame ratio-4x5" data-speed="0.04"><div class="ph tone-sky"></div><figcaption class="frame__note">Placeholder · the two of you leaving, backlit</figcaption></figure>
           </div>
         </li>
       </ol>
     </section>
 
-    <!-- CONTACT SHEET: the signature. Grease-pencil circles mark the selects. -->
-    <section class="sheet is-dark" id="contact-sheet" aria-labelledby="sheet-title">
-      <div class="sheet__intro">
+    <!-- CONTACT SHEET: grease-pencil circles mark the selects -->
+    <section class="sheet" id="contact-sheet" aria-labelledby="sheet-title">
+      <div class="sheet__intro" data-reveal>
         <p class="eyebrow">How I work</p>
         <h2 class="section-title" id="sheet-title">I shoot the whole minute. <em>You get the second that mattered.</em></h2>
         <p>A moment isn't one frame, it's a dozen. The half-blink, the laugh starting, the laugh, the laugh falling apart. I go through every one and mark the keepers by hand, the way it used to be done on a contact sheet.</p>
@@ -163,57 +201,57 @@
 
       <div class="strip" data-sheet>
         <ol class="strip__frames">
-          <li class="strip__frame tone-warm"><span class="strip__code">14</span></li>
-          <li class="strip__frame tone-warm"><span class="strip__code">14A</span></li>
-          <li class="strip__frame tone-warm is-select"><span class="strip__code">15</span></li>
-          <li class="strip__frame tone-warm"><span class="strip__code">15A</span></li>
-          <li class="strip__frame tone-candle"><span class="strip__code">16</span></li>
-          <li class="strip__frame tone-candle"><span class="strip__code">16A</span></li>
-          <li class="strip__frame tone-candle"><span class="strip__code">17</span></li>
-          <li class="strip__frame tone-candle is-select"><span class="strip__code">17A</span></li>
-          <li class="strip__frame tone-flash"><span class="strip__code">18</span></li>
-          <li class="strip__frame tone-flash is-select"><span class="strip__code">18A</span></li>
-          <li class="strip__frame tone-flash"><span class="strip__code">19</span></li>
-          <li class="strip__frame tone-flash"><span class="strip__code">19A</span></li>
+          <li class="strip__frame"><div class="ph tone-golden"></div><span class="strip__code">14</span></li>
+          <li class="strip__frame"><div class="ph tone-golden"></div><span class="strip__code">14A</span></li>
+          <li class="strip__frame is-select"><div class="ph tone-golden"></div><span class="strip__code">15</span></li>
+          <li class="strip__frame"><div class="ph tone-golden"></div><span class="strip__code">15A</span></li>
+          <li class="strip__frame"><div class="ph tone-candle"></div><span class="strip__code">16</span></li>
+          <li class="strip__frame"><div class="ph tone-candle"></div><span class="strip__code">16A</span></li>
+          <li class="strip__frame"><div class="ph tone-candle"></div><span class="strip__code">17</span></li>
+          <li class="strip__frame is-select"><div class="ph tone-candle"></div><span class="strip__code">17A</span></li>
+          <li class="strip__frame"><div class="ph tone-flash"></div><span class="strip__code">18</span></li>
+          <li class="strip__frame is-select"><div class="ph tone-flash"></div><span class="strip__code">18A</span></li>
+          <li class="strip__frame"><div class="ph tone-flash"></div><span class="strip__code">19</span></li>
+          <li class="strip__frame"><div class="ph tone-flash"></div><span class="strip__code">19A</span></li>
         </ol>
-        <p class="strip__caption">Placeholder · swap in real frames from one sequence. Keep the circled one as your best.</p>
+        <p class="strip__caption">Placeholder · swap in 12 real frames from one moment. Keep the circles on your best ones.</p>
       </div>
 
       <ul class="principles">
-        <li>
+        <li data-reveal>
           <h3>Mostly unseen</h3>
           <p>Ninety percent of the day, I don't say a word to you. You'll forget I'm there, and so will your guests.</p>
         </li>
-        <li>
+        <li data-reveal>
           <h3>Directed in motion</h3>
           <p>For portraits I give you things to do, not poses to hold. Most couples loosen up within five minutes.</p>
         </li>
-        <li>
+        <li data-reveal>
           <h3>Edited by hand</h3>
-          <p>No presets pasted across a thousand files. Every image is toned on its own, with a warm, film-like finish that won't date.</p>
+          <p>No preset pasted across a thousand files. Every image is toned on its own, with rich, true colour that won't date.</p>
         </li>
       </ul>
     </section>
 
     <!-- STORIES -->
     <section class="stories" id="stories" aria-labelledby="stories-title">
-      <header class="section-head">
+      <header class="section-head" data-reveal>
         <p class="eyebrow">Stories</p>
         <h2 class="section-title" id="stories-title">Recent weddings, start to finish.</h2>
       </header>
       <div class="stories__grid">
         <a class="story" href="#inquire">
-          <figure class="frame ratio-4x5 tone-golden"><figcaption class="frame__note">Placeholder · cover image</figcaption></figure>
+          <figure class="frame ratio-4x5" data-speed="0.04"><div class="ph tone-garden"></div><figcaption class="frame__note">Placeholder · cover image</figcaption></figure>
           <h3 class="story__names">[Name] &amp; [Name]</h3>
           <p class="story__meta">[Venue] · [Month]</p>
         </a>
         <a class="story" href="#inquire">
-          <figure class="frame ratio-4x5 tone-candle"><figcaption class="frame__note">Placeholder · cover image</figcaption></figure>
+          <figure class="frame ratio-4x5" data-speed="-0.06"><div class="ph tone-velvet"></div><figcaption class="frame__note">Placeholder · cover image</figcaption></figure>
           <h3 class="story__names">[Name] &amp; [Name]</h3>
           <p class="story__meta">[Venue] · [Month]</p>
         </a>
         <a class="story" href="#inquire">
-          <figure class="frame ratio-4x5 tone-window"><figcaption class="frame__note">Placeholder · cover image</figcaption></figure>
+          <figure class="frame ratio-4x5" data-speed="0.08"><div class="ph tone-jacaranda"></div><figcaption class="frame__note">Placeholder · cover image</figcaption></figure>
           <h3 class="story__names">[Name] &amp; [Name]</h3>
           <p class="story__meta">[Venue] · [Month]</p>
         </a>
@@ -227,7 +265,7 @@
         <blockquote>
           <p>[Paste a real review here. The best ones mention how it <em>felt</em> to have you there, not just the photos.]</p>
         </blockquote>
-        <figcaption>[Couple's names] · [The Knot / Google]</figcaption>
+        <figcaption>[Couple's names] · [Google / Facebook]</figcaption>
       </figure>
       <ul class="words__short">
         <li>“[A short line from a review]”</li>
@@ -238,7 +276,7 @@
 
     <!-- PRACTICAL + FAQ -->
     <section class="practical" id="practical" aria-labelledby="practical-title">
-      <header class="section-head">
+      <header class="section-head" data-reveal>
         <p class="eyebrow">The practical part</p>
         <h2 class="section-title" id="practical-title">What you're actually getting.</h2>
       </header>
@@ -279,7 +317,7 @@
 
     <!-- INQUIRE -->
     <section class="inquire" id="inquire" aria-labelledby="inquire-title">
-      <div class="inquire__intro">
+      <div class="inquire__intro" data-reveal>
         <p class="eyebrow">Check your date</p>
         <h2 class="section-title" id="inquire-title">Tell me about your day.</h2>
         <p>I take a limited number of weddings each year so each one gets my full attention. Send the basics and I'll reply within [two] days with my availability and full price guide. Then, if it feels right, we'll have a 20-minute video call to talk through your day.</p>
@@ -299,7 +337,7 @@
           <input id="f-date" name="date" type="date">
         </div>
         <div class="field field--half">
-          <label for="f-venue">Venue or city</label>
+          <label for="f-venue">Venue or area</label>
           <input id="f-venue" name="venue" type="text">
         </div>
         <div class="field">

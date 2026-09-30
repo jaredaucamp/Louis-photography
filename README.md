@@ -2,7 +2,7 @@
 
 A one-page site for a documentary wedding photographer. It walks future
 couples through a wedding day in time order, from getting ready to the last
-song, then shows how you work, your stories, pricing basics and an inquiry form.
+song, with photos that open and drift as you scroll, then shows how you work, your stories, pricing basics and an inquiry form.
 
 Plain HTML, CSS and JavaScript. There's no build step: open `index.html` or put the folder on any static host.
 
@@ -13,22 +13,23 @@ Plain HTML, CSS and JavaScript. There's no build step: open `index.html` or put 
 - `images/`: put your photos here
 
 ## Adding your photos
-Every photo spot is a `<figure class="frame ...">` with a caption that says
-what kind of shot belongs there. To use a real photo, add an `<img>` inside the figure:
+Every photo spot is a `<figure class="frame ...">` holding a coloured
+placeholder `<div class="ph tone-...">`. Replace that div with your image:
 
 ```html
-<figure class="frame ratio-4x5 tone-window">
+<figure class="frame ratio-4x5" data-speed="0.04">
   <img src="images/getting-ready-1.jpg" alt="Bride buttoning her dress by the window">
   <figcaption class="frame__note">…</figcaption>
 </figure>
 ```
 
-The placeholder caption hides automatically once an image is there. Export
-photos at about 2000px on the long edge, as JPG or WebP at roughly 80% quality.
+The placeholder caption hides by itself once there's an image. Export photos
+at about 2000px on the long edge, as JPG or WebP at roughly 80% quality.
 
-The contact sheet (`.strip__frame`) works the same way: drop an `<img>` into
-each `<li>`. Use 12 frames from one real moment, and keep the `is-select`
-class (the pencil circle) on your best ones.
+- The opening wall has 12 square photos, a mix of colour and black & white.
+- `data-speed` sets how much a photo drifts as you scroll (0 is none, 0.1 is a lot).
+- The contact sheet (`.strip__frame`) works the same way: use 12 frames from
+  one real moment, and keep the `is-select` class (the pencil circle) on your best ones.
 
 ## Placeholders to replace
 Search the files for `[`:
