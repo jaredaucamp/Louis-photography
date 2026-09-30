@@ -51,9 +51,5 @@ Formspree or Netlify Forms.
   accounts need the repo to be public for this.
 
 ## Fonts
-- **Boska** (headings) and **Author** (text and labels), both from
-  [Fontshare](https://www.fontshare.com), free for commercial use under the ITF
-  Free Font License.
-- They load from Fontshare's servers. Don't commit the font files to this repo
-  while it's public: the license doesn't allow redistributing them through a
-  public repository.
+**Ibarra Real Nova** (headings) and **Jost** (text and labels), from Google
+Fonts. Both are free for commercial use (SIL Open Font License).

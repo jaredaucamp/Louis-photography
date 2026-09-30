@@ -70,6 +70,77 @@ if ("IntersectionObserver" in window) {
   revealTargets.forEach((el) => el.classList.add("is-in"));
 }
 
+// The day's clock: shows which moment of the day you're reading, and how far through it you are
+const day = document.getElementById("the-day");
+const chapters = [...document.querySelectorAll(".chapter")];
+const clock = document.querySelector(".day-clock");
+const clockTime = clock.querySelector(".day-clock__time");
+const clockTitle = clock.querySelector(".day-clock__title");
+const clockFill = clock.querySelector(".day-clock__fill");
+
+// Intro: split into words so each one can come into focus as you scroll
+const intro = document.querySelector(".intro__text");
+const wrapWords = (node) => {
+  [...node.childNodes].forEach((child) => {
+    if (child.nodeType === Node.TEXT_NODE) {
+      const frag = document.createDocumentFragment();
+      child.textContent.split(/(\s+)/).forEach((part) => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        const span = document.createElement("span");
+        span.className = "word";
+        span.textContent = part;
+        frag.appendChild(span);
+      });
+      child.replaceWith(frag);
+    } else if (child.nodeType === Node.ELEMENT_NODE) {
+      wrapWords(child);
+    }
+  });
+};
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let words = [];
+if (!reduceMotion) {
+  wrapWords(intro);
+  words = [...intro.querySelectorAll(".word")];
+  intro.classList.add("is-reading");
+}
+
+let ticking = false;
+const onStoryScroll = () => {
+  ticking = false;
+  const vh = window.innerHeight;
+
+  // Intro words: light up from the start of the paragraph as it rises through the screen
+  if (words.length) {
+    const r = intro.getBoundingClientRect();
+    const progress = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
+    const lit = Math.round(progress * words.length);
+    words.forEach((w, i) => w.classList.toggle("is-lit", i < lit));
+  }
+
+  // Day clock
+  const d = day.getBoundingClientRect();
+  const inDay = d.top < vh * 0.5 && d.bottom > vh * 0.6;
+  clock.classList.toggle("is-on", inDay);
+  if (!inDay) return;
+  let current = chapters[0];
+  chapters.forEach((c) => { if (c.getBoundingClientRect().top < vh * 0.55) current = c; });
+  const time = current.querySelector("time").textContent + " " + current.querySelector(".chapter__time span").textContent;
+  if (clockTime.textContent !== time) {
+    clockTime.textContent = time;
+    clockTitle.textContent = current.querySelector(".chapter__title").textContent;
+  }
+  const first = chapters[0].getBoundingClientRect().top;
+  const last = chapters[chapters.length - 1].getBoundingClientRect().bottom;
+  const through = Math.min(1, Math.max(0, (vh * 0.55 - first) / (last - first)));
+  clockFill.style.transform = `scaleX(${through})`;
+};
+window.addEventListener("scroll", () => {
+  if (!ticking) { ticking = true; requestAnimationFrame(onStoryScroll); }
+}, { passive: true });
+onStoryScroll();
+
 // Inquiry form: validate, then open the visitor's email app with everything filled in
 const form = document.getElementById("inquiry-form");
 const status = form.querySelector(".form__status");

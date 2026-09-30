@@ -27,9 +27,9 @@
   --placeholder: rgba(43, 34, 28, 0.4);
 
   /* Type */
-  --font-display: "Boska", "Iowan Old Style", Georgia, serif;   /* contrasty serif with a hand-cut feel */
-  --font-body: "Author", "Avenir Next", "Segoe UI", sans-serif;  /* warm humanist sans for reading */
-  --font-label: "Author", "Avenir Next", "Segoe UI", sans-serif; /* same family, tracked caps for labels */
+  --font-display: "Ibarra Real Nova", "Iowan Old Style", Georgia, serif; /* Spanish Renaissance serif: bookish, warm, a lovely italic */
+  --font-body: "Jost", "Futura", "Avenir Next", sans-serif;               /* clean geometric sans for reading */
+  --font-label: "Jost", "Futura", "Avenir Next", sans-serif;              /* same family, tracked caps for labels */
 
   --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.86rem);
   --step-0: clamp(1.06rem, 1rem + 0.25vw, 1.2rem);
@@ -467,6 +467,88 @@ em { font-style: italic; }
 }
 [data-reveal].is-in { opacity: 1; transform: none; }
 
+/* Chapters tell the story in sequence: time, then title, then words, then the prints develop */
+.chapter[data-reveal] { opacity: 1; transform: none; }
+.chapter .chapter__time,
+.chapter .chapter__title,
+.chapter .chapter__body > p {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.chapter .chapter__title { transition-delay: 0.12s; }
+.chapter .chapter__body > p { transition-delay: 0.24s; }
+.chapter .frame {
+  clip-path: inset(100% 0 0 0);
+  filter: sepia(1) saturate(3) hue-rotate(-25deg) brightness(0.45);
+  transition: clip-path 1.3s var(--ease), filter 2.2s var(--ease);
+}
+.chapter .frame:nth-child(2) { transition-delay: 0.15s, 0.15s; }
+.chapter .frame:nth-child(3) { transition-delay: 0.3s, 0.3s; }
+.chapter.is-in .chapter__time,
+.chapter.is-in .chapter__title,
+.chapter.is-in .chapter__body > p { opacity: 1; transform: none; }
+.chapter.is-in .frame { clip-path: inset(0 0 0 0); filter: none; }
+
+/* The day's clock: follows you through the timeline */
+.day { position: relative; }
+.day-clock {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: baseline;
+  gap: 0.35rem 0.9rem;
+  min-width: 15rem;
+  padding: 0.7rem 1.2rem 0.8rem;
+  border-radius: 14px;
+  background: rgba(43, 34, 28, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--paper);
+  opacity: 0;
+  transform: translate(-50%, 16px);
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.day-clock.is-on { opacity: 1; transform: translate(-50%, 0); }
+.day-clock__time {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+}
+.day-clock__title {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--edge);
+}
+.day-clock__bar {
+  grid-column: 1 / -1;
+  height: 2px;
+  background: rgba(236, 227, 210, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.day-clock__fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--safelight);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Intro: words come into focus as you read down */
+.intro__text .word { transition: color 0.35s linear; }
+.intro__text.is-reading .word { color: var(--muted); }
+.intro__text.is-reading .word.is-lit { color: var(--fg); }
+
 /* ---------- Contact sheet (signature) ---------- */
 
 .sheet {
@@ -857,7 +939,11 @@ em { font-style: italic; }
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
   }
-  [data-reveal] { opacity: 1; transform: none; }
+  [data-reveal],
+  .chapter .chapter__time,
+  .chapter .chapter__title,
+  .chapter .chapter__body > p { opacity: 1; transform: none; }
+  .chapter .frame { clip-path: none; filter: none; }
 }
 
 /* A fixed menu can't escape a parent with backdrop-filter, so drop it while open */
@@ -874,5 +960,5 @@ em { font-style: italic; }
 .site-header.menu-open { color: var(--fg); }
 .wordmark span { font-family: var(--font-label); font-style: normal; font-weight: 500; font-size: 0.5em; letter-spacing: 0.22em; text-transform: uppercase; margin-left: 0.4em; vertical-align: 0.15em; }
 
-/* Author reads a touch light in small tracked caps; give labels a little more weight */
+/* Small tracked caps read better with a little more weight */
 .eyebrow, .button, .site-nav, .menu-toggle, .chapter__time span, .included dt, .field label, .strip__code { font-weight: 500; }
